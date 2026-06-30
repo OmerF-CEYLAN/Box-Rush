@@ -66,11 +66,12 @@ public class BoxSpawner : MonoBehaviour
 
             box.SetMaterialColor(box.colorType);
 
-            foreach (BoxTargetArea targetArea in BoxManager.Instance.targetAreas)
+            foreach (BoxTargetArea targetArea in BoxRepository.Instance.targetAreas)
             {
                 if(box.colorType == targetArea.colorType)
                 {
                     box.targetArea = targetArea;
+                    box.direction = targetArea.direction;
                     break;
                 }
             }

@@ -537,6 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 1
+  direction: 1
 --- !u!4 &914027974
 Transform:
   m_ObjectHideFlags: 0
@@ -948,6 +949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 2
+  direction: 0
 --- !u!4 &1188038035
 Transform:
   m_ObjectHideFlags: 0
@@ -1318,6 +1320,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 0
+  direction: 0
 --- !u!1 &2005598920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 3
+  direction: 1
 --- !u!4 &2097975564
 Transform:
   m_ObjectHideFlags: 0
@@ -3236,12 +3240,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1807349180826437931}
   - component: {fileID: 9090951479376863180}
-  - component: {fileID: 9090951479376863182}
   - component: {fileID: 9090951479376863181}
   - component: {fileID: 9090951479376863183}
   - component: {fileID: 391643304918710251}
   - component: {fileID: 5913830687937564098}
   - component: {fileID: 9090951479376863179}
+  - component: {fileID: 9090951479376863185}
+  - component: {fileID: 9090951479376863184}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -3309,24 +3314,6 @@ MonoBehaviour:
   boxPrefab: {fileID: 4885300919120790362, guid: 8eb4f545e73a05c47acb2618b85d1a1c, type: 3}
   minBoxCountInAStack: 9
   maxBoxCountInAStack: 10
---- !u!114 &9090951479376863182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8892074516298571637}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abb69e0b85a7b854fb2b420443b5cc21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetAreas:
-  - {fileID: 1828574448}
-  - {fileID: 914027973}
-  - {fileID: 1188038034}
-  - {fileID: 2097975563}
-  boxesToBeDestroyed: []
 --- !u!114 &9090951479376863183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3339,6 +3326,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4be1c0d388d1694fa238924a0c5de57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9090951479376863184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892074516298571637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44ebd2c642aee7745bcd9ce9b495cdd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxRepository: {fileID: 9090951479376863185}
+--- !u!114 &9090951479376863185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892074516298571637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef872c72bbdbc294c8f7bcc6474be974, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAreas:
+  - {fileID: 1828574448}
+  - {fileID: 914027973}
+  - {fileID: 1188038034}
+  - {fileID: 2097975563}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

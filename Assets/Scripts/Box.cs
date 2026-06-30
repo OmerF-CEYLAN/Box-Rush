@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public enum ColorType { red, blue, yellow, green }
-
 public class Box : MonoBehaviour
 {
     public ColorType colorType;
+    public Direction direction;
     public BoxTargetArea targetArea;
     public MeshRenderer boxRenderer;
+
+    [SerializeField] private BoxColorMapping colorMapping;
 
     void Start()
     {
@@ -25,20 +26,6 @@ public class Box : MonoBehaviour
 
     public void SetMaterialColor(ColorType colorType)
     {
-        switch (colorType)
-        {
-            case ColorType.red:
-                boxRenderer.material.color = Color.red;
-                break;
-            case ColorType.blue:
-                boxRenderer.material.color = Color.blue;
-                break;
-            case ColorType.yellow:
-                boxRenderer.material.color = Color.yellow;
-                break;
-            case ColorType.green:
-                boxRenderer.material.color = Color.green;
-                break;
-        }
+        boxRenderer.material.color = colorMapping.GetColor(colorType);
     }
 }

@@ -86,7 +86,7 @@ public struct PlayMusicEvent : IEvent
 
 public struct MoveClickedEvent : IEvent
 {
-    public MoveDirection direction;
+    public Direction direction;
 }
 
 public struct NewBoxStackSpawnedEvent : IEvent

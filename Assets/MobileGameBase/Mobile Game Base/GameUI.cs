@@ -7,8 +7,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
-public enum MoveDirection { Left, Right }
+using UnityEditor.Experimental.GraphView;
 
 public class GameUI : MonoBehaviour
 {
@@ -69,8 +68,8 @@ public class GameUI : MonoBehaviour
     {
         restartButton?.onClick.AddListener(OnRestartClicked);
 
-        leftButton?.onClick.AddListener(() => OnMoveClicked(MoveDirection.Left));
-        rightButton?.onClick.AddListener(() => OnMoveClicked(MoveDirection.Right));
+        leftButton?.onClick.AddListener(() => OnMoveClicked(Direction.Left));
+        rightButton?.onClick.AddListener(() => OnMoveClicked(Direction.Right));
 
         // Seed the cached high score from GameManager if available,
         // otherwise it will be updated by the first NewHighScoreEvent.
@@ -80,9 +79,9 @@ public class GameUI : MonoBehaviour
         ShowIdle();
     }
 
-    void OnMoveClicked(MoveDirection moveDirection)
+    void OnMoveClicked(Direction direction)
     {
-        EventBus<MoveClickedEvent>.Publish(new MoveClickedEvent { direction = moveDirection });
+        EventBus<MoveClickedEvent>.Publish(new MoveClickedEvent { direction = direction });
     }
 
     private void HandleGameStarted()

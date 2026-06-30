@@ -122,5 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorType: 0
+  direction: 0
   targetArea: {fileID: 0}
   boxRenderer: {fileID: 8170639034409604898}
+  colorMapping: {fileID: 11400000, guid: f39b622fb83526147a8b678dd624cd5a, type: 2}
