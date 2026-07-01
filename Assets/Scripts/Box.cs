@@ -22,6 +22,7 @@ public class Box : MonoBehaviour
     public void SetTargetArea(BoxTargetArea target)
     {
         targetArea = target;
+        direction = target.direction;
     }
 
     public void SetMaterialColor(ColorType colorType)

@@ -13,6 +13,12 @@ public class ConveyorGameManager : GameManager
     private void OnEnable()
     {
         gameOverBinding = new EventBinding<GameOverEvent>(TriggerGameOver);
+        EventBus<GameOverEvent>.Subscribe(gameOverBinding);
+    }
+
+    private void OnDisable()
+    {
+        EventBus<GameOverEvent>.Unsubscribe(gameOverBinding);
     }
 
     protected override void Awake()

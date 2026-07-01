@@ -2,13 +2,27 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BoxRepository : MonoBehaviour
+public interface IBoxReader
+{
+    public Box GetFirstBox();
+    public IReadOnlyList<BoxTargetArea> TargetAreas { get; }
+}
+
+public interface IBoxWriter
+{
+    void AddStack(Stack<Box> stack);
+    void ClearAllStacks();
+    void RegisterTargetArea(BoxTargetArea area);
+}
+
+public class BoxRepository : MonoBehaviour, IBoxReader, IBoxWriter
 {
     public static BoxRepository Instance;
 
-    public List<Stack<Box>> boxStacks = new List<Stack<Box>>();
-    public List<BoxTargetArea> targetAreas = new List<BoxTargetArea>();
+    List<Stack<Box>> boxStacks = new List<Stack<Box>>();
+    List<BoxTargetArea> targetAreas = new List<BoxTargetArea>();
 
+    public IReadOnlyList<BoxTargetArea> TargetAreas => targetAreas;
     public IReadOnlyList<Stack<Box>> BoxStacks => boxStacks;
 
     private void Awake()
@@ -44,5 +58,11 @@ public class BoxRepository : MonoBehaviour
             return null;
 
         return firstStack.Pop();
+    }
+
+    public void RegisterTargetArea(BoxTargetArea area)
+    {
+        if (!targetAreas.Contains(area))
+            targetAreas.Add(area);
     }
 }

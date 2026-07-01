@@ -7,10 +7,15 @@ public class BoxTargetArea : MonoBehaviour
     public ColorType colorType;
     public Direction direction;
 
-    void Start()
+    [SerializeField] private MonoBehaviour boxRepositorySource;
+    private IBoxWriter boxWriter;
+
+    private void Awake()
     {
-        
+        boxWriter = boxRepositorySource as IBoxWriter;
+        boxWriter.RegisterTargetArea(this);
     }
+
 
     // Update is called once per frame
     void Update()

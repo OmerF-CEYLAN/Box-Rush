@@ -5,7 +5,18 @@ public class BoxSpawner : MonoBehaviour
 {
     [SerializeField] GameObject boxPrefab;
     [SerializeField] int minBoxCountInAStack, maxBoxCountInAStack;
+    [SerializeField] MonoBehaviour boxRepositorySource;
+    [SerializeField] MonoBehaviour boxColorProviderSource;
+
     EventBinding<GameStartedEvent> gameStartedBinding;
+    IBoxColorProvider boxColorProvider;
+    IBoxReader boxReader;
+
+    private void Awake()
+    {
+        boxReader = boxRepositorySource as IBoxReader;
+        boxColorProvider = boxColorProviderSource as IBoxColorProvider;
+    }
 
     private void OnEnable()
     {
@@ -60,18 +71,15 @@ public class BoxSpawner : MonoBehaviour
 
         if(boxObject.TryGetComponent(out Box box))
         {
-            int randomBoxColorValue = Random.Range(0, System.Enum.GetValues(typeof(ColorType)).Length);
-
-            box.colorType = (ColorType)randomBoxColorValue;
+            box.colorType = boxColorProvider.GetRandomActiveColor();
 
             box.SetMaterialColor(box.colorType);
 
-            foreach (BoxTargetArea targetArea in BoxRepository.Instance.targetAreas)
+            foreach (BoxTargetArea targetArea in boxReader.TargetAreas)
             {
                 if(box.colorType == targetArea.colorType)
                 {
-                    box.targetArea = targetArea;
-                    box.direction = targetArea.direction;
+                    box.SetTargetArea(targetArea);
                     break;
                 }
             }
